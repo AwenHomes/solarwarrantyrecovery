@@ -126,6 +126,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Set dynamic copyright year
+    const yearElement = document.getElementById('currentYear');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
 });
 
 // Function to export leads (for admin/testing use)

@@ -4,10 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Your solar installer went bankrupt? We help homeowners recover warranties and get their solar systems working again.">
+
+    <!-- Security Headers -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Open Graph Tags for Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Solar Warranty Recovery - Help for Orphaned Solar Installations">
+    <meta property="og:description" content="Your solar installer went bankrupt? We help homeowners recover warranties and get their solar systems working again.">
+    <meta property="og:url" content="https://awenhomes.github.io/solarwarrantyrecovery/">
+    <meta property="og:site_name" content="Solar Warranty Recovery">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Solar Warranty Recovery - Help for Orphaned Solar Installations">
+    <meta name="twitter:description" content="Your solar installer went bankrupt? We help homeowners recover warranties and get their solar systems working again.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Resource Hints for Performance -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+
     <title>Solar Warranty Recovery - Help for Orphaned Solar Installations</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -107,9 +132,9 @@
                 <h2>Find Out If We Can Help</h2>
                 <p class="section-intro">Tell us about your situation and we'll let you know if we can recover your warranty rights.</p>
 
-                <form id="leadForm" class="lead-form">
+                <form id="leadForm" class="lead-form" aria-label="Contact form for solar warranty recovery">
                     <!-- Honeypot field for bot protection (hidden from users) -->
-                    <div class="honeypot">
+                    <div class="honeypot" aria-hidden="true">
                         <label for="website">Website</label>
                         <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
                     </div>
@@ -117,38 +142,134 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Your Name *</label>
-                            <input type="text" id="name" name="name" required maxlength="100" pattern="[A-Za-z\s'-]+" title="Please enter a valid name (letters only)">
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                required
+                                maxlength="100"
+                                pattern="[A-Za-z\s'-]+"
+                                title="Please enter a valid name (letters only)"
+                                aria-label="Your full name"
+                                aria-required="true"
+                                autocomplete="name">
                         </div>
                         <div class="form-group">
                             <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required maxlength="254">
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                required
+                                maxlength="254"
+                                aria-label="Your email address"
+                                aria-required="true"
+                                autocomplete="email">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" maxlength="20" pattern="[0-9\s\-\+\(\)]*" title="Please enter a valid phone number">
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                maxlength="20"
+                                pattern="[\d\s\-\+\(\)]{10,20}"
+                                title="Please enter a valid phone number (e.g., (555) 123-4567 or 555-123-4567)"
+                                aria-label="Your phone number"
+                                autocomplete="tel"
+                                placeholder="(555) 123-4567">
                         </div>
                         <div class="form-group">
                             <label for="state">State</label>
-                            <input type="text" id="state" name="state" maxlength="50">
+                            <select
+                                id="state"
+                                name="state"
+                                aria-label="Your state"
+                                autocomplete="address-level1">
+                                <option value="">Select your state</option>
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                                <option value="DC">Washington DC</option>
+                            </select>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="installer">Name of Your Solar Installer</label>
-                        <input type="text" id="installer" name="installer" maxlength="100">
+                        <input
+                            type="text"
+                            id="installer"
+                            name="installer"
+                            maxlength="100"
+                            aria-label="Name of your solar installer company"
+                            autocomplete="organization">
                     </div>
 
                     <div class="form-group">
                         <label for="issue">What's Wrong With Your System?</label>
-                        <textarea id="issue" name="issue" rows="4" maxlength="1000"></textarea>
+                        <textarea
+                            id="issue"
+                            name="issue"
+                            rows="4"
+                            maxlength="1000"
+                            aria-label="Description of your solar system issue"
+                            placeholder="e.g., System stopped producing power, inverter error, panels not working..."></textarea>
                     </div>
 
-                    <button type="submit" class="cta-button">Get Free Consultation</button>
+                    <button type="submit" class="cta-button" aria-label="Submit form to get free consultation">Get Free Consultation</button>
 
-                    <div id="formMessage" class="form-message"></div>
+                    <div id="formMessage" class="form-message" role="status" aria-live="polite"></div>
                 </form>
             </div>
         </section>
@@ -181,7 +302,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Solar Warranty Recovery. Helping homeowners recover from orphaned solar installations.</p>
+            <p>&copy; <span id="currentYear"></span> Solar Warranty Recovery. Helping homeowners recover from orphaned solar installations.</p>
         </div>
     </footer>
 
