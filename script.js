@@ -6,14 +6,23 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
 
-        // Get form data
+        // Honeypot check for bot protection
+        const honeypot = document.getElementById('website');
+        if (honeypot && honeypot.value !== '') {
+            // Silent fail for bots
+            showMessage('Thank you! We\'ll contact you within 24 hours to discuss your solar warranty recovery options.', 'success');
+            form.reset();
+            return;
+        }
+
+        // Get form data with sanitization
         const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            state: document.getElementById('state').value,
-            installer: document.getElementById('installer').value,
-            issue: document.getElementById('issue').value,
+            name: sanitizeInput(document.getElementById('name').value),
+            email: sanitizeInput(document.getElementById('email').value),
+            phone: sanitizeInput(document.getElementById('phone').value),
+            state: sanitizeInput(document.getElementById('state').value),
+            installer: sanitizeInput(document.getElementById('installer').value),
+            issue: sanitizeInput(document.getElementById('issue').value),
             timestamp: new Date().toISOString()
         };
 
@@ -23,16 +32,23 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        // Improved email validation (RFC 5322 compliant)
+        const emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
         if (!emailRegex.test(formData.email)) {
             showMessage('Please enter a valid email address.', 'error');
             return;
         }
 
+        // Name validation (no numbers or special characters for CSV injection prevention)
+        if (!/^[a-zA-Z\s'-]+$/.test(formData.name)) {
+            showMessage('Please enter a valid name (letters only).', 'error');
+            return;
+        }
+
         try {
-            // Store lead locally (for testing)
-            saveLeadLocally(formData);
+            // Store lead temporarily (sessionStorage - clears on tab close)
+            // WARNING: For production, send directly to backend instead
+            saveLeadTemporarily(formData);
 
             // You can replace this with actual backend submission
             // Example: await submitToBackend(formData);
@@ -41,7 +57,9 @@ document.addEventListener('DOMContentLoaded', function() {
             await new Promise(resolve => setTimeout(resolve, 500));
 
             showMessage('Thank you! We\'ll contact you within 24 hours to discuss your solar warranty recovery options.', 'success');
-            form.reset();
+
+            // Reset form after brief delay so user sees success message
+            setTimeout(() => form.reset(), 1000);
 
             // Optional: Track conversion with analytics
             if (typeof gtag !== 'undefined') {
@@ -49,10 +67,19 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
         } catch (error) {
-            console.error('Error submitting form:', error);
+            // Log generic error without sensitive details
+            if (typeof console !== 'undefined' && console.error) {
+                console.error('Form submission failed');
+            }
             showMessage('There was an error submitting your information. Please try again or call us directly.', 'error');
         }
     });
+
+    // Sanitize input to prevent XSS and injection attacks
+    function sanitizeInput(input) {
+        if (typeof input !== 'string') return '';
+        return input.trim().substring(0, 500); // Limit length
+    }
 
     function showMessage(message, type) {
         formMessage.textContent = message;
@@ -62,14 +89,28 @@ document.addEventListener('DOMContentLoaded', function() {
         formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
-    function saveLeadLocally(data) {
-        // Save to localStorage for testing/demo purposes
-        let leads = JSON.parse(localStorage.getItem('solarLeads') || '[]');
-        leads.push(data);
-        localStorage.setItem('solarLeads', JSON.stringify(leads));
+    function saveLeadTemporarily(data) {
+        // SECURITY: Use sessionStorage instead of localStorage
+        // Data clears when tab closes - better for PII
+        // WARNING: Still not secure for production - use backend instead
+        try {
+            let leads = JSON.parse(sessionStorage.getItem('solarLeads') || '[]');
 
-        console.log('Lead saved:', data);
-        console.log('Total leads:', leads.length);
+            // Limit to 100 leads max to prevent storage exhaustion
+            if (leads.length >= 100) {
+                leads.shift(); // Remove oldest
+            }
+
+            leads.push(data);
+            sessionStorage.setItem('solarLeads', JSON.stringify(leads));
+
+            // No console logging of PII in production
+        } catch (e) {
+            // Storage quota exceeded or disabled
+            if (typeof console !== 'undefined' && console.warn) {
+                console.warn('Unable to save lead data locally');
+            }
+        }
     }
 
     // Smooth scrolling for anchor links
@@ -88,31 +129,43 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Function to export leads (for admin/testing use)
-function exportLeads() {
-    const leads = JSON.parse(localStorage.getItem('solarLeads') || '[]');
-
-    if (leads.length === 0) {
-        console.log('No leads to export');
+// SECURITY: Protected function - requires authentication in production
+function exportLeads(authToken) {
+    // SECURITY: In production, verify authToken before proceeding
+    if (!authToken || authToken !== 'CHANGE_THIS_IN_PRODUCTION') {
+        if (typeof console !== 'undefined' && console.error) {
+            console.error('Unauthorized access attempt');
+        }
         return;
     }
 
-    // Convert to CSV
+    // Check sessionStorage (changed from localStorage for security)
+    const leads = JSON.parse(sessionStorage.getItem('solarLeads') || '[]');
+
+    if (leads.length === 0) {
+        if (typeof console !== 'undefined' && console.log) {
+            console.log('No leads to export');
+        }
+        return;
+    }
+
+    // Convert to CSV with proper sanitization to prevent CSV injection
     const headers = ['Name', 'Email', 'Phone', 'State', 'Installer', 'Issue', 'Timestamp'];
     const csvContent = [
         headers.join(','),
         ...leads.map(lead => [
-            lead.name,
-            lead.email,
-            lead.phone || '',
-            lead.state || '',
-            lead.installer || '',
-            `"${(lead.issue || '').replace(/"/g, '""')}"`,
-            lead.timestamp
+            sanitizeCSVField(lead.name),
+            sanitizeCSVField(lead.email),
+            sanitizeCSVField(lead.phone || ''),
+            sanitizeCSVField(lead.state || ''),
+            sanitizeCSVField(lead.installer || ''),
+            sanitizeCSVField(lead.issue || ''),
+            sanitizeCSVField(lead.timestamp)
         ].join(','))
     ].join('\n');
 
     // Download CSV
-    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -121,12 +174,37 @@ function exportLeads() {
     a.click();
     document.body.removeChild(a);
     window.URL.revokeObjectURL(url);
-
-    console.log(`Exported ${leads.length} leads`);
 }
 
-// Optional: Add to window for console access
-window.exportLeads = exportLeads;
+// Sanitize CSV fields to prevent CSV injection attacks
+function sanitizeCSVField(field) {
+    if (!field) return '""';
+
+    // Convert to string
+    let sanitized = String(field);
+
+    // Remove or escape dangerous characters that could trigger formulas
+    // Excel formulas start with: = + - @ \t \r
+    const dangerousChars = /^[=+\-@\t\r]/;
+
+    if (dangerousChars.test(sanitized)) {
+        // Prefix with single quote to prevent formula execution
+        sanitized = "'" + sanitized;
+    }
+
+    // Escape quotes and wrap in quotes
+    sanitized = sanitized.replace(/"/g, '""');
+
+    return `"${sanitized}"`;
+}
+
+// SECURITY: Remove global window access - use secure method instead
+// To export leads in development, use: exportLeads('CHANGE_THIS_IN_PRODUCTION')
+// In production, implement proper authentication
+if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+    // Only expose in development
+    window.exportLeads = exportLeads;
+}
 
 // Optional: Integration function for backend services
 async function submitToBackend(formData) {

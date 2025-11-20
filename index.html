@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Your solar installer went bankrupt? We help homeowners recover warranties and get their solar systems working again.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Solar Warranty Recovery - Help for Orphaned Solar Installations</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -104,36 +108,42 @@
                 <p class="section-intro">Tell us about your situation and we'll let you know if we can recover your warranty rights.</p>
 
                 <form id="leadForm" class="lead-form">
+                    <!-- Honeypot field for bot protection (hidden from users) -->
+                    <div class="honeypot">
+                        <label for="website">Website</label>
+                        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Your Name *</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" required maxlength="100" pattern="[A-Za-z\s'-]+" title="Please enter a valid name (letters only)">
                         </div>
                         <div class="form-group">
                             <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" required maxlength="254">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
+                            <input type="tel" id="phone" name="phone" maxlength="20" pattern="[0-9\s\-\+\(\)]*" title="Please enter a valid phone number">
                         </div>
                         <div class="form-group">
                             <label for="state">State</label>
-                            <input type="text" id="state" name="state">
+                            <input type="text" id="state" name="state" maxlength="50">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="installer">Name of Your Solar Installer</label>
-                        <input type="text" id="installer" name="installer">
+                        <input type="text" id="installer" name="installer" maxlength="100">
                     </div>
 
                     <div class="form-group">
                         <label for="issue">What's Wrong With Your System?</label>
-                        <textarea id="issue" name="issue" rows="4"></textarea>
+                        <textarea id="issue" name="issue" rows="4" maxlength="1000"></textarea>
                     </div>
 
                     <button type="submit" class="cta-button">Get Free Consultation</button>
