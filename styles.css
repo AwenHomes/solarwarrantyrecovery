@@ -316,6 +316,161 @@ nav {
     display: block;
 }
 
+/* Intake Assessment Form Section */
+.intake-assessment {
+    padding: 5rem 0;
+    background-color: white;
+}
+
+.intake-assessment h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark-color);
+}
+
+.intake-form-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.intake-intro {
+    background-color: #e0f2fe;
+    border-left: 4px solid var(--primary-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--dark-color);
+    font-size: 1.125rem;
+    line-height: 1.8;
+}
+
+.intake-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.form-section {
+    border: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.form-section:last-of-type {
+    margin-bottom: 1.5rem;
+}
+
+.form-section legend {
+    display: block;
+    width: 100%;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.helper-text {
+    font-size: 0.875rem;
+    color: var(--gray-color);
+    margin-top: 0.25rem;
+    font-style: italic;
+}
+
+/* Checkbox Styles */
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.checkbox-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+.checkbox-item label {
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--dark-color);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checkbox-item label input[type="text"] {
+    width: 250px;
+    padding: 0.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+/* Radio Button Styles */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.radio-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.radio-item input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+.radio-item label {
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--dark-color);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.radio-item label input[type="text"] {
+    width: 250px;
+    padding: 0.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.intake-closing {
+    background-color: #f0fdf4;
+    border-left: 4px solid var(--success-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    text-align: center;
+    color: var(--dark-color);
+    font-size: 1.125rem;
+    line-height: 1.8;
+}
+
 /* FAQ Section */
 .faq {
     padding: 5rem 0;
@@ -398,5 +553,15 @@ footer p {
 
     .stat-number {
         font-size: 2.5rem;
+    }
+
+    /* Intake Form Responsive */
+    .intake-form {
+        padding: 1.5rem 1rem;
+    }
+
+    .checkbox-item label input[type="text"],
+    .radio-item label input[type="text"] {
+        width: 200px;
     }
 }

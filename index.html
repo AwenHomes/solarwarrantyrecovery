@@ -143,6 +143,222 @@
             </div>
         </section>
 
+        <!-- Intake Assessment Form Section -->
+        <section class="intake-assessment" id="intake">
+            <div class="container">
+                <h2>Free Solar Warranty Assessment Request</h2>
+                <div class="intake-form-wrapper">
+                    <div class="intake-intro">
+                        <p>Thank you for your interest. Please fill out this form so I can understand your situation. I'll review it and contact you within 24 hours to schedule your free 30-minute assessment call.</p>
+                    </div>
+
+                    <form id="intakeForm" class="intake-form">
+                        <!-- Basic Information -->
+                        <fieldset class="form-section">
+                            <legend>Basic Information</legend>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="intake-name">Your Name *</label>
+                                    <input type="text" id="intake-name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="intake-email">Email *</label>
+                                    <input type="email" id="intake-email" name="email" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="intake-phone">Phone Number *</label>
+                                    <input type="tel" id="intake-phone" name="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="intake-best-time">Best time to reach you?</label>
+                                    <input type="text" id="intake-best-time" name="bestTime" placeholder="e.g., mornings, evenings, weekends">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="intake-location">What city/state is your home located in? *</label>
+                                    <input type="text" id="intake-location" name="location" required>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <!-- Solar System Information -->
+                        <fieldset class="form-section">
+                            <legend>Solar System Information</legend>
+
+                            <div class="form-group">
+                                <label for="intake-installer">Who was your original solar installer? *</label>
+                                <input type="text" id="intake-installer" name="installer" required>
+                                <p class="helper-text">Company name that installed your system</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="intake-out-of-business">When did they go out of business (approximately)?</label>
+                                <input type="text" id="intake-out-of-business" name="outOfBusiness">
+                                <p class="helper-text">Example: 2023, early 2024, not sure, etc.</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="intake-installation-year">When was your system installed? *</label>
+                                <input type="text" id="intake-installation-year" name="installationYear" required>
+                                <p class="helper-text">Approximate year is fine</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="intake-issue">What's wrong with your system? *</label>
+                                <textarea id="intake-issue" name="systemIssue" rows="4" required></textarea>
+                                <p class="helper-text">Example: Not producing power, inverter error message, panels damaged, etc.</p>
+                            </div>
+                        </fieldset>
+
+                        <!-- Equipment Information -->
+                        <fieldset class="form-section">
+                            <legend>What equipment do you have? (Select all that apply)</legend>
+
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="intake-enphase" name="equipment" value="enphase">
+                                    <label for="intake-enphase">Enphase microinverters</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="intake-solaredge" name="equipment" value="solaredge">
+                                    <label for="intake-solaredge">SolarEdge inverter</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="intake-other-inverter" name="equipment" value="other-inverter">
+                                    <label for="intake-other-inverter">Other inverter brand (specify below)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="intake-battery" name="equipment" value="battery">
+                                    <label for="intake-battery">Battery/energy storage</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="intake-not-sure-brand" name="equipment" value="not-sure">
+                                    <label for="intake-not-sure-brand">Not sure what brand</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="intake-other-equipment" name="equipment" value="other">
+                                    <label for="intake-other-equipment">Other: <input type="text" id="intake-other-equipment-text" name="otherEquipment" placeholder="Please specify"></label>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <!-- Documentation -->
+                        <fieldset class="form-section">
+                            <legend>Do you have any documentation from your original installation?</legend>
+
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="intake-docs-yes" name="documentation" value="yes-all">
+                                    <label for="intake-docs-yes">Yes, I have contracts and/or permits</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="intake-docs-some" name="documentation" value="some">
+                                    <label for="intake-docs-some">I have some documents but not everything</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="intake-docs-no" name="documentation" value="no">
+                                    <label for="intake-docs-no">No, I don't have anything</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="intake-docs-unsure" name="documentation" value="unsure">
+                                    <label for="intake-docs-unsure">Not sure</label>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <!-- Previous Efforts -->
+                        <fieldset class="form-section">
+                            <legend>Have you tried contacting anyone for help?</legend>
+
+                            <div class="form-group">
+                                <textarea id="intake-previous-efforts" name="previousEfforts" rows="4"></textarea>
+                                <p class="helper-text">Example: Called manufacturer, contacted other installers, filed complaint, etc. This helps me understand what's already been tried.</p>
+                            </div>
+                        </fieldset>
+
+                        <!-- Warranty Status -->
+                        <fieldset class="form-section">
+                            <legend>Is your system still under warranty (to your knowledge)?</legend>
+
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="intake-warranty-yes" name="warrantyStatus" value="definitely-yes">
+                                    <label for="intake-warranty-yes">Yes, definitely</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="intake-warranty-maybe" name="warrantyStatus" value="maybe">
+                                    <label for="intake-warranty-maybe">I think so</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="intake-warranty-expired" name="warrantyStatus" value="expired">
+                                    <label for="intake-warranty-expired">No, warranty expired</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="intake-warranty-unsure" name="warrantyStatus" value="no-idea">
+                                    <label for="intake-warranty-unsure">I have no idea</label>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <!-- How They Heard -->
+                        <fieldset class="form-section">
+                            <legend>How did you hear about this service?</legend>
+
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="intake-source-facebook" name="source" value="facebook">
+                                    <label for="intake-source-facebook">Facebook group</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="intake-source-reddit" name="source" value="reddit">
+                                    <label for="intake-source-reddit">Reddit</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="intake-source-nextdoor" name="source" value="nextdoor">
+                                    <label for="intake-source-nextdoor">NextDoor</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="intake-source-referral" name="source" value="referral">
+                                    <label for="intake-source-referral">Friend/referral</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="intake-source-google" name="source" value="google">
+                                    <label for="intake-source-google">Google search</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="intake-source-other" name="source" value="other">
+                                    <label for="intake-source-other">Other: <input type="text" id="intake-source-other-text" name="sourceOther" placeholder="Please specify"></label>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <!-- Additional Information -->
+                        <fieldset class="form-section">
+                            <legend>Anything else I should know?</legend>
+
+                            <div class="form-group">
+                                <textarea id="intake-additional" name="additionalInfo" rows="4" placeholder="Optional"></textarea>
+                            </div>
+                        </fieldset>
+
+                        <button type="submit" class="cta-button">Submit Assessment Request</button>
+
+                        <div id="intakeFormMessage" class="form-message"></div>
+                    </form>
+
+                    <div class="intake-closing">
+                        <p>Thank you! I'll review your information and contact you within 24 hours to schedule a free 30-minute assessment call. During that call, I'll honestly tell you whether I think your case is viable.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- FAQ Section -->
         <section class="faq">
             <div class="container">
