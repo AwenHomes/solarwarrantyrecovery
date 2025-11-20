@@ -316,6 +316,347 @@ nav {
     display: block;
 }
 
+/* Who I Help Section */
+.who-help {
+    padding: 5rem 0;
+    background-color: white;
+}
+
+.who-help h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark-color);
+}
+
+.eligibility-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.eligibility-card {
+    background: white;
+    border: 2px solid #e2e8f0;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.eligibility-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+}
+
+.eligibility-card .checkmark {
+    font-size: 2rem;
+    color: var(--success-color);
+    margin-bottom: 1rem;
+}
+
+.eligibility-card p {
+    color: var(--dark-color);
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+/* Companies Failed Section */
+.companies-failed {
+    padding: 5rem 0;
+    background-color: var(--light-color);
+}
+
+.companies-failed h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark-color);
+}
+
+.companies-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 900px;
+    margin: 3rem auto;
+    text-align: center;
+}
+
+.company-column {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.company-column p {
+    color: var(--dark-color);
+    line-height: 2;
+    margin: 0;
+}
+
+.companies-note {
+    text-align: center;
+    color: var(--gray-color);
+    margin-top: 2rem;
+    font-style: italic;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Service Details Section */
+.service-details {
+    padding: 5rem 0;
+    background-color: white;
+}
+
+.service-details h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark-color);
+}
+
+.service-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.service-step {
+    background: white;
+    border: 2px solid #e2e8f0;
+    padding: 2.5rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.service-step:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.1);
+}
+
+.service-step-num {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+    margin: 0 auto 1.5rem;
+}
+
+.service-step h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+}
+
+.service-step p {
+    color: var(--gray-color);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.step-details {
+    list-style: none;
+    text-align: left;
+    color: var(--gray-color);
+    line-height: 2;
+}
+
+.step-details li {
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.step-details li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.step-price {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--success-color);
+}
+
+/* What You Get Section */
+.what-you-get {
+    padding: 5rem 0;
+    background-color: var(--light-color);
+}
+
+.guarantees-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 3rem auto 0;
+}
+
+.guarantee-box {
+    background: white;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    border-top: 5px solid var(--success-color);
+}
+
+.guarantee-box.warning {
+    border-top-color: var(--danger-color);
+}
+
+.guarantee-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark-color);
+}
+
+.guarantee-box ul {
+    list-style: none;
+    color: var(--gray-color);
+    line-height: 2;
+}
+
+.guarantee-box li {
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.guarantee-box li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--gray-color);
+}
+
+/* Pricing Example Section */
+.pricing-example {
+    padding: 5rem 0;
+    background-color: white;
+}
+
+.pricing-example h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark-color);
+}
+
+.pricing-table {
+    max-width: 600px;
+    margin: 3rem auto;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+
+.pricing-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.pricing-row:last-child {
+    border-bottom: none;
+}
+
+.pricing-row.highlight {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(245, 158, 11, 0.05));
+}
+
+.pricing-label {
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.pricing-cost {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.pricing-example-box {
+    max-width: 600px;
+    margin: 2rem auto;
+    background: var(--light-color);
+    border-left: 5px solid var(--secondary-color);
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.pricing-example-box h4 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+}
+
+.pricing-example-box p {
+    color: var(--gray-color);
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+}
+
+.example-breakdown {
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.example-save {
+    color: var(--success-color);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* About Section */
+.about {
+    padding: 5rem 0;
+    background-color: white;
+}
+
+.about h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--dark-color);
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--light-color);
+    padding: 3rem;
+    border-radius: 12px;
+    border-left: 5px solid var(--primary-color);
+}
+
+.about-content p {
+    color: var(--dark-color);
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.about-content p:last-child {
+    margin-bottom: 0;
+}
+
+.about-content strong {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
 /* FAQ Section */
 .faq {
     padding: 5rem 0;
@@ -377,14 +718,22 @@ footer p {
 
     .problem h2,
     .solution h2,
+    .who-help h2,
+    .companies-failed h2,
+    .service-details h2,
+    .pricing-example h2,
     .stats h2,
+    .about h2,
     .contact h2,
     .faq h2 {
         font-size: 2rem;
     }
 
     .problem-grid,
-    .solution-steps {
+    .solution-steps,
+    .eligibility-grid,
+    .service-steps,
+    .guarantees-wrapper {
         gap: 1.5rem;
     }
 
@@ -398,5 +747,27 @@ footer p {
 
     .stat-number {
         font-size: 2.5rem;
+    }
+
+    .companies-list {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-table {
+        max-width: 100%;
+    }
+
+    .pricing-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .about-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .about-content p {
+        font-size: 1rem;
     }
 }
