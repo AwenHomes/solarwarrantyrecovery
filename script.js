@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Simulate API call
             await new Promise(resolve => setTimeout(resolve, 500));
 
-            showMessage('Thank you! We\'ll contact you within 24 hours to discuss your solar warranty recovery options.', 'success');
+            showMessage('Thank you for joining our waitlist! We\'ll contact you when we launch and keep you updated on our progress.', 'success');
             form.reset();
 
             // Optional: Track conversion with analytics

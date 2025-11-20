@@ -47,6 +47,23 @@ nav {
     color: var(--primary-color);
 }
 
+.coming-soon-badge {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+nav .container {
+    position: relative;
+}
+
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
@@ -60,6 +77,18 @@ nav {
     font-weight: 800;
     margin-bottom: 1.5rem;
     line-height: 1.2;
+}
+
+.coming-soon-label {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(10px);
 }
 
 .hero-subtitle {
@@ -92,7 +121,57 @@ nav {
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
-/* Problem Section */
+/* Benefits Section */
+.benefits {
+    padding: 5rem 0;
+    background-color: var(--light-color);
+}
+
+.benefits h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--dark-color);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.benefit-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+    border-top: 4px solid var(--secondary-color);
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.benefit-card .icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.benefit-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+}
+
+.benefit-card p {
+    color: var(--gray-color);
+    line-height: 1.8;
+}
+
+/* Keep problem styles for backwards compatibility if needed */
 .problem {
     padding: 5rem 0;
     background-color: var(--light-color);
@@ -375,6 +454,7 @@ footer p {
         font-size: 1.125rem;
     }
 
+    .benefits h2,
     .problem h2,
     .solution h2,
     .stats h2,
@@ -383,6 +463,7 @@ footer p {
         font-size: 2rem;
     }
 
+    .benefits-grid,
     .problem-grid,
     .solution-steps {
         gap: 1.5rem;
